@@ -347,7 +347,7 @@ This is the preseed configuration file for automating Ubuntu installations.
 
 ## Contributors
 
-- **Krishna**
+- **Krishna** , **Harsh**, **Priyam**, **Krutarth**.
 
 ## License
 
