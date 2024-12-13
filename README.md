@@ -3,10 +3,10 @@
 This repository contains the implementation of a **Cloud-Based Python Code Compiling Environment**. 
 
 The project simulates a cloud infrastructure to compile Python code efficiently, providing features like:
-- User login and authentication.
+- Get the username.
 - Dynamic resource scaling using virtualization.
 - Python code compilation and execution, focusing on applications in machine learning, computer vision, and deep learning.
-- Real-time monitoring of resource usage (e.g., memory, CPU utilization).
+- Indirect Resouce Management via Job Distribution.
 
 The project is developed using **KVM**, **Docker**, and **Ubuntu Server**, leveraging virtualization to create a scalable and efficient coding environment.
 
@@ -26,20 +26,21 @@ The project is developed using **KVM**, **Docker**, and **Ubuntu Server**, lever
 
 ## Overview
 
-This project is a part of the **CSE540 Cloud Computing** course. It aims to provide a practical demonstration of how cloud environments can be designed and utilized for Python-based software development. The infrastructure is built from scratch using two physical machines to emulate the cloud, with a focus on backend logic and scalability rather than the user interface.
+This project is a part of the **CSE540 Cloud Computing** course. It aims to provide a practical demonstration of how cloud environments can be designed and utilized for Python-based ML and DL codes . The infrastructure is built from scratch using two physical machines to emulate the cloud, with a focus on backend logic and scalability rather than the user interface.
 
 ## Features
 
 - **User Authentication**: Secure login system for users.
 - **Dynamic Resource Scaling**: Automatically scale resources using virtualization.
 - **Python Code Compilation and Execution**: Compile and execute Python code, especially for machine learning, computer vision, and deep learning applications.
-- **Real-Time Resource Monitoring**: Monitor system resources such as memory and CPU utilization in real-time.
+- **Job Scheduling**: Indirect Resouce Management via Job Distribution.
 
 ## Technologies Used
 
 - **Ubuntu Server**
 - **KVM (Kernel-based Virtual Machine)**
 - **Docker**
+- **Ubuntu Server**
 - **Node.js**
 - **Express.js**
 - **Multer**

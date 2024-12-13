@@ -1,4 +1,3 @@
-
 import express from 'express';
 import fs from 'fs';
 import path from 'path';
@@ -7,7 +6,7 @@ import axios from 'axios';
 import { exec } from 'child_process';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
-import FormData from 'form-data';  // Importing the form-data package
+import FormData from 'form-data'; // Importing the form-data package
 
 // Initialize express app
 const app = express();
@@ -56,20 +55,20 @@ async function compileCodeWithDocker(filePath, res) {
 }
 
 // Function to send the output file to the proxy server
+// Update sendOutputToProxy function to include userName
 async function sendOutputToProxy(outputFilePath, res) {
-    const proxyUrl = 'http://10.20.24.90:3000/receive-output'; // URL to the proxy server endpoint
+    const proxyUrl = 'http://10.20.24.90:3000/receive-output';
+    const userName = 'exampleUser'; // Replace with actual user name passed in the job (e.g., from job context)
 
     try {
-        // Create a readable stream from the output file
         const fileStream = fs.createReadStream(outputFilePath);
 
-        // Create FormData to send the file
         const formData = new FormData();
         formData.append('file', fileStream);
+        formData.append('userName', userName); // Add userName here
 
-        // Send the form data to the proxy server
         const response = await axios.post(proxyUrl, formData, {
-            headers: formData.getHeaders() // Set the correct headers for the FormData
+            headers: formData.getHeaders(),
         });
 
         console.log('Output sent to proxy server:', response.data);
@@ -97,14 +96,19 @@ app.post('/process-job', upload.single('file'), (req, res) => {
 
 // Register Node to Proxy Server on Startup
 const registerNode = async () => {
-    const nodeAddress = 'http://10.20.24.90:3000/register-node';  // Proxy server IP and port
-    const workerIp = '192.168.122.58';  // Use the correct Worker IP
+    const nodeAddress = 'http://10.20.24.90:3000/register-node'; // Proxy server IP and port
+    const workerIp = '192.168.122.58'; // Use the correct Worker IP with the port
 
     try {
         const response = await axios.post(nodeAddress, { address: workerIp });
         console.log('Node registered:', response.data);
     } catch (error) {
         console.error('Error registering node:', error.message);
+        if (error.response) {
+            console.error('Proxy server response:', error.response.data);
+        }
+        // Retry registration after a delay if it fails
+        setTimeout(registerNode, 5000); // Retry after 5 seconds
     }
 };
 
@@ -113,5 +117,5 @@ registerNode();
 
 // Start the worker server
 app.listen(port, () => {
-    console.log(`Worker server listening at http://10.20.24.90:${port}`);
+    console.log(`Worker server listening at http://192.168.122.58:${port}`);
 });
