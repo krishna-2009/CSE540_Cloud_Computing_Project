@@ -199,9 +199,9 @@ This project is a part of the **CSE540 Cloud Computing** course. It aims to prov
     docker --version
     ```
 
-7. **Run the Test Container**: Verify Docker functionality:
+7. **Run the Test Container**: Go to  Docker terminal for library installation.:
     ```bash
-    sudo docker run hello-world
+    sudo docker run -it ubuntu bash
     ```
 
 8. **Add User to Docker Group**: To allow running Docker commands without `sudo`, add the current user to the Docker group:
