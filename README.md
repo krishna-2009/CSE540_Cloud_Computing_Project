@@ -347,8 +347,7 @@ This is the preseed configuration file for automating Ubuntu installations.
 - **Ensure Node.js Version Compatibility**: The application requires Node.js version 16. Please make sure you have the correct version installed.
 
 ## Contributors
-
-- **Krishna** , **Harsh**, **Priyam**, **Krutarth**.
+- **[Krishna Patel](https://github.com/krishna-2009)** , **[Harsh Loriya](https://github.com/LoriyaHarsh)**, **[Priyam Shah](https://github.com/Priyam932004)**, **[Krutarth Trivedi](https://github.com/)**.
 
 ## License
 
